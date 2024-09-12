@@ -1,45 +1,23 @@
 Aplicación Fullstack con Node.js, React y Docker
-Requisitos de Instalación
-Docker: Asegúrate de tener Docker instalado en tu máquina. Puedes descargar Docker desde Docker's official website.
-Docker Compose: Docker Compose se utiliza para gestionar varios contenedores Docker. Docker Desktop ya incluye Docker Compose.
-Git: Para clonar el repositorio, asegúrate de tener Git instalado en tu máquina. Descarga desde Git's official website.
-Configuración del archivo .env
-Crea un archivo .env en la raíz de tu proyecto con las siguientes variables de entorno:
-
-Backend (backend/.env)
-plaintext
-Copiar código
-PORT=3001
-MONGODB_URI=mongodb://mongo:27017/yourdatabase
-JWT_SECRET=your_secret_key
-Frontend (frontend/.env)
-plaintext
-Copiar código
-REACT_APP_API_URL=http://localhost:3001/api
-Asegúrate de ajustar los valores según tus necesidades de desarrollo o producción.
 
 Pasos para Instalar y Ejecutar la Aplicación
 Clona el repositorio:
 
-bash
-Copiar código
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
 Construye y ejecuta los contenedores Docker:
 
 En la raíz del proyecto, ejecuta el siguiente comando:
 
-bash
-Copiar código
 docker-compose up --build
-Este comando construirá y levantará tanto el contenedor del backend (Node.js) como el del frontend (React), junto con cualquier otro servicio necesario (por ejemplo, MongoDB).
+
+Este comando construirá y levantará tanto el contenedor del backend (Node.js) como el del frontend (React), junto con (postgresql)
 
 Verifica que los contenedores estén ejecutándose:
 
 Abre tu navegador y visita:
 
-Frontend: http://localhost:3000
-Backend: http://localhost:3001
+Frontend: http://localhost:8080
+Backend: http://localhost:3000
+
 Mejores Prácticas
 Separación de Contenedores: El uso de contenedores separados para el frontend, backend y base de datos garantiza que cada parte de la aplicación sea autónoma y gestionable de manera independiente. Esto facilita el escalamiento y el mantenimiento de la aplicación.
 
@@ -66,12 +44,3 @@ Reducción de la Superficie de Ataque: Minimiza la cantidad de puertos expuestos
 
 Monitoreo y Logging: Implementa herramientas de monitoreo para detectar y responder rápidamente a cualquier actividad sospechosa. Asegúrate de almacenar y auditar los logs de acceso y errores.
 
-Apagado de la Aplicación
-Para detener la aplicación y eliminar los contenedores, volúmenes y redes creados por docker-compose, ejecuta:
-
-bash
-Copiar código
-docker-compose down
-Esto limpiará el entorno Docker, asegurando que los recursos se liberen correctamente.
-
-Con este documento de despliegue, estarás preparado para instalar, ejecutar y mantener tu aplicación de forma segura y eficiente.

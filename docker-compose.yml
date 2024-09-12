@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: ./solicitudesApi
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file: 
+      - ./solicitudesApi/.env # Ruta al archivo .env dentro de la carpeta solicitudesApi
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  frontend:
+    build:
+      context: ./frontsolicitudes # Ruta al directorio donde se encuentra tu Dockerfile del frontend
+      dockerfile: Dockerfile # Nombre del Dockerfile del frontend
+    ports:
+      - "8080:80" # Exponiendo el puerto 8080 para el frontend, ajusta según tu necesidad
+    networks:
+      - mynetwork
+    depends_on:
+      - app
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: solicitudes
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+volumes:
+  postgres_data:
+
+networks:
+  mynetwork:
+    driver: bridge

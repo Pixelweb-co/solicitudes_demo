@@ -3,18 +3,13 @@ Aplicación Fullstack con Node.js, React y Docker
 Pasos para Instalar y Ejecutar la Aplicación
 Clona el repositorio:
 
-bash
-Copiar código
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
 Construye y ejecuta los contenedores Docker:
 
 En la raíz del proyecto, ejecuta el siguiente comando:
 
-bash
-Copiar código
 docker-compose up --build
-Este comando construirá y levantará tanto el contenedor del backend (Node.js) como el del frontend (React), junto con cualquier otro servicio necesario (por ejemplo, MongoDB).
+
+Este comando construirá y levantará tanto el contenedor del backend (Node.js) como el del frontend (React), junto con (postgresql)
 
 Verifica que los contenedores estén ejecutándose:
 

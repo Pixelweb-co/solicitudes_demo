@@ -108,8 +108,13 @@
         });
       }
 
-        if (onSave) onSave(); // Notificar al componente padre que se guardó un usuario
+        if(method === 'POST'){ window.location.href='/login';} // Notificar al componente padre que se guardó un usuario
+        
+        if (onSave) onSave();
         if (onClose) onClose(); // Cierra el formulario si se proporcionó onClose
+      
+
+      
       } catch (err) {
         setError('Error al guardar el usuario: ' + (err.response?.data?.message || err.message));
       }

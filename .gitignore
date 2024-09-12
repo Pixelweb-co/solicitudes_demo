@@ -18,8 +18,8 @@ solicitudesApi/package-lock.json
 frontsolicitudes/package-lock.json
 
 # Ignorar archivos de entorno
-solicitudesApi/.env
-frontsolicitudes/.env
+#solicitudesApi/.env
+#frontsolicitudes/.env
 
 # Ignorar directorios de caché y compilación
 solicitudesApi/.cache/
